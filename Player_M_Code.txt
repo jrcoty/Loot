@@ -1,0 +1,26 @@
+
+                if (mirror) { fac = -(fac); }
+
+
+                if ((x_spd + fac) < 0 || (x_spd + fac) > 0
+
+
+
+if (frame == 1)
+                    {
+
+                        s_x_pos = 10;
+                        s_y_pos = 28;
+
+                        frame++;
+
+                    }
+                    else
+                    {
+
+                        s_x_pos = 1;
+                        s_y_pos = 28;
+
+                        frame--;
+
+                    }

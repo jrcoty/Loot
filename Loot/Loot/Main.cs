@@ -24,8 +24,8 @@ namespace Loot
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Stage stage = new Stage();
-        private Player_One player = new Player_One(); 
+        private Layout.Stage stage = new Layout.Stage();
+        private Players.Player_One player = new Players.Player_One(); 
 
         public Main()
         {
@@ -60,7 +60,7 @@ namespace Loot
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // **DEBUG**
-            global_vars.Font = Content.Load<SpriteFont>("Debug_Font");
+            global_vars.Font = Content.Load<SpriteFont>("GB_Font");
 
             // Load the sprite sheet
             global_vars.Sprite_Sheet = Content.Load<Texture2D>(global_vars.Sheet_Name); 

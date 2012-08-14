@@ -50,13 +50,15 @@ namespace Loot
         private static int o_Score = 0;
         private static int t_Score = 0;
 
-        private enum GameState
+        public enum GameState
         {
             start, 
             normal, 
             paused
         }
 
+        private static GameState g_state;
+        
         // **DEBUG**
         private static SpriteFont font; 
 
@@ -138,11 +140,11 @@ namespace Loot
 
         #region State Variables
 
-       // public static GameState Game_State
-        //{
-          //  get { return g_state; }
-           // set { g_state = value; }
-        //}
+        public static GameState Game_State
+        {
+            get { return g_state; }
+            set { g_state = value; }
+        }
 
         // Player One Score Get/Set
         public static int O_SCore
@@ -291,6 +293,20 @@ namespace Loot
         {
             get { return p_one_righ; }
             set { p_one_righ = value; }
+        }
+
+        // Player 1 "A" Get/Set
+        public static Keys P_1_A
+        {
+            get { return p_one_a; }
+            set { p_one_a = value; }
+        }
+
+        // Player 1 "B" Get/Set
+        public static Keys P_1_B
+        {
+            get { return p_one_b; }
+            set { p_one_b = value; }
         }
 
         #endregion

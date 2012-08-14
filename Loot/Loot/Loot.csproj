@@ -112,6 +112,7 @@
     <Compile Include="Layout\Tiles.cs" />
     <Compile Include="Players\Player_One.cs" />
     <Compile Include="Players\Player_One_Controls.cs" />
+    <Compile Include="Players\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Main.cs" />

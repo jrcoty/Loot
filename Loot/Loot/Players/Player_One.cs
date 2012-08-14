@@ -10,6 +10,15 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Loot.Players
 {
+
+    public enum PlayerState
+    {
+        standing,
+        moving,
+        attacking,
+        attack_over
+    }
+
     class Player_One
     {
 
@@ -26,7 +35,6 @@ namespace Loot.Players
         private float y_pos = 128f;
 
         private Boolean mirror = false;
-        private Boolean moving = false; 
 
         private float x_spd = 0f;
         private float y_spd = 0f;
@@ -37,7 +45,9 @@ namespace Loot.Players
         private float eTime;
         private float mTime;
 
-        private SpriteEffects m_effect; 
+        private SpriteEffects m_effect;
+
+        private PlayerState p_state; 
 
         // Player Controls
         private Player_One_Controls poc = new Player_One_Controls();
@@ -65,7 +75,7 @@ namespace Loot.Players
             mTime = (float)time.ElapsedGameTime.TotalSeconds; 
 
             // Call to check for a Key Press
-            poc.key_press(ref x_spd, ref y_spd, ref mirror, ref moving, max_x_spd, max_y_spd, mTime);
+            poc.key_press(ref x_spd, ref y_spd, ref mirror, ref p_state, max_x_spd, max_y_spd, mTime);
 
             // Updates the X-Position based on the speed
             x_pos += x_spd; 
@@ -78,92 +88,118 @@ namespace Loot.Players
         private void switch_Frame()
         {
 
-            if (!moving)
+            switch (p_state)
             {
 
-                if (eTime > 500f)
-                {
+                case PlayerState.moving:
 
-                    switch (frame)
+                    if (eTime > 100f)
                     {
 
-                        case 1:
-                            s_x_pos = 10;
-                            s_y_pos = 28;
+                        switch (frame)
+                        {
 
-                            frame++;
+                            case 1:
+                                s_x_pos = 19;
+                                s_y_pos = 28;
 
-                            break;
+                                frame++;
 
-                        case 2:
-                            s_x_pos = 1;
-                            s_y_pos = 28;
+                                break;
 
-                            frame--;
+                            case 2:
+                                s_x_pos = 28;
+                                s_y_pos = 28;
 
-                            break;
+                                frame++;
 
-                        default:
-                            frame = 1;
-                            break;
+                                break;
+
+                            case 3:
+                                s_x_pos = 37;
+                                s_y_pos = 28;
+
+                                frame = 1;
+
+                                break;
+
+                            case 4:
+                                s_x_pos = 10;
+                                s_y_pos = 28;
+
+                                frame = 1;
+
+                                break;
+
+                            default:
+                                frame = 1;
+                                break;
+
+                        }
+
+                        eTime = 0f;
 
                     }
 
-                    eTime = 0f;
+                    break;
 
-                }
+                case PlayerState.attacking:
 
-            }
-            else
-            {
-
-                if (eTime > 100f)
-                {
-
-                    switch (frame)
+                    if (eTime > 300f)
                     {
 
-                        case 1:
-                            s_x_pos = 19;
-                            s_y_pos = 28;
+                        s_x_pos = 28;
+                        s_y_pos = 28;
 
-                            frame++;
+                        p_state = PlayerState.attack_over; 
 
-                            break; 
+                    }
+                    else
+                    {
 
-                        case 2:
-                            s_x_pos = 28;
-                            s_y_pos = 28;
-
-                            frame++;
-
-                            break;
-
-                        case 3:
-                            s_x_pos = 37;
-                            s_y_pos = 28;
-
-                            frame = 1;
-
-                            break;
-
-                        case 4:
-                            s_x_pos = 10;
-                            s_y_pos = 28;
-
-                            frame = 1;
-
-                            break; 
-
-                        default:
-                            frame = 1;
-                            break; 
+                        s_x_pos = 46;
+                        s_y_pos = 28;
 
                     }
 
-                    eTime = 0f;
+                    eTime = 0f; 
 
-                }
+                    break;
+
+                default:
+
+                    if (eTime > 500f)
+                    {
+
+                        switch (frame)
+                        {
+
+                            case 1:
+                                s_x_pos = 10;
+                                s_y_pos = 28;
+
+                                frame++;
+
+                                break;
+
+                            case 2:
+                                s_x_pos = 1;
+                                s_y_pos = 28;
+
+                                frame--;
+
+                                break;
+
+                            default:
+                                frame = 1;
+                                break;
+
+                        }
+
+                        eTime = 0f;
+
+                    }
+                    break;
 
             }
 

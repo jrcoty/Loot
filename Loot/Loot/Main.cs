@@ -60,7 +60,7 @@ namespace Loot
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // **DEBUG**
-            global_vars.Font = Content.Load<SpriteFont>("GB_Font");
+            global_vars.Font = Content.Load<SpriteFont>("Debug_font");
 
             // Load the sprite sheet
             global_vars.Sprite_Sheet = Content.Load<Texture2D>(global_vars.Sheet_Name); 

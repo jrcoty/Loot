@@ -67,7 +67,7 @@ namespace Loot.Layout
                     vector = new Vector2(temp_x, temp_y);
 
                     // Retrieve the desired tile from the global spritesheet
-                    rect = Tiles.tile_Rect(global_vars.Layout[n, m]);
+                    rect = Tiles.stage_Tiles(global_vars.Layout[n, m]);
 
                     // Draw the tile from the global spritesheet
                     batch.Draw(global_vars.Sprite_Sheet, vector, rect, global_vars.Sprite_Color);

@@ -1,84 +1,21 @@
 ﻿// Jonathan Coty
-// 26-Jun-2012
+// 11-Aug-2012
 
-// Stage Class
-// Handles the background and level generation 
+// Returns rectangle object of specified tile
+// object 
 
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Loot
+namespace Loot.Layout
 {
-    class Stage
+    static class Tiles
     {
 
-        private Vector2 vector;
-        private Rectangle rect;
-
-        private Header header = new Header(); 
-
-        #region Constructor
-
-        public Stage()
-        {
-
-            // Nothing to initialize
-
-        }
-
-        #endregion
-
-        public void Update(GameTime time)
-        {
-
-            header.Update(time); 
-
-        }
-
-        #region Draw
-
-        public void Draw(SpriteBatch batch)
-        {
-
-            float temp_x, temp_y;
-
-            batch.Draw(global_vars.Background, new Vector2(0,0), new Rectangle(0, 0, global_vars.ScreenWidth, global_vars.ScreenHeight), global_vars.Sprite_Color);
-
-            header.Draw(batch); 
-
-            // Nested for loop that cycles through the layout 
-            // array
-            for (int n = 0; n < global_vars.Layout_Row; n++)
-            {
-
-                for (int m = 0; m < global_vars.Layout_Col; m++)
-                {
-
-                    // Add the offset value from the background
-                    temp_x = (float)m * global_vars.Sprite_Width;
-
-                    temp_y = (float)(n * global_vars.Sprite_Height) + global_vars.Y_Offset;
-
-                    vector = new Vector2(temp_x, temp_y);
-
-                    // Retrieve the desired tile from the global spritesheet
-                    rect = tile_Rect(global_vars.Layout[n, m]);
-
-                    // Draw the tile from the global spritesheet
-                    batch.Draw(global_vars.Sprite_Sheet, vector, rect, global_vars.Sprite_Color);
-
-                }
-
-            }
-
-        }
-
-        #endregion
-
-        #region Tiles
-
-        private Rectangle tile_Rect(int tile_Val)
+        // Uses the value from the global_vars layout 
+        // variable to return correct rectangle object
+        public static Rectangle tile_Rect(int tile_Val)
         {
 
             int x_temp, y_temp;
@@ -211,8 +148,6 @@ namespace Loot
             return new Rectangle(x_temp, y_temp, global_vars.Sprite_Width, global_vars.Sprite_Height);
 
         }
-
-        #endregion
 
     }
 }

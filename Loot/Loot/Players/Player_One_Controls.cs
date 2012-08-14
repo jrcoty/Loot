@@ -10,7 +10,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Loot
+namespace Loot.Players
 {
     class Player_One_Controls
     {
@@ -30,7 +30,7 @@ namespace Loot
             float max_x, float max_y, float time)
         {
 
-            // Controls the Left Key
+            // Controls the Left Designated Key
             if (Keyboard.GetState().IsKeyDown(global_vars.P_1_Left))
             {
 
@@ -44,8 +44,8 @@ namespace Loot
                 }
 
             }
-            
-            // Controls the Right Key 
+
+            // Controls the Right Designated Key 
             if (Keyboard.GetState().IsKeyDown(global_vars.P_1_Right)) 
             {
 
